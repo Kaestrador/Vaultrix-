@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="VAULTRIX Admin — Manage your digital product listings.">
+  <meta name="theme-color" content="#0A0A0A">
+  <!-- Prevent indexing of admin panel -->
+  <meta name="robots" content="noindex, nofollow">
+  <title>VAULTRIX — Admin Panel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700;800&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- ═══════════════════════════════════════════════
+       LOGIN SCREEN (shown when not authenticated)
+  ═══════════════════════════════════════════════ -->
+  <div class="login-screen" id="loginScreen" hidden>
+    <div class="login-card">
+
+      <!-- Logo -->
+      <div class="login-logo">
+        <svg width="32" height="32" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 4L12 24" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M26 4L16 24" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+          <rect x="12.25" y="2" width="3.5" height="24" rx="1.75" fill="#E5181B"/>
+        </svg>
+        <span class="login-wordmark">VAULTRIX</span>
+      </div>
+
+      <h1 class="login-title">Admin Access</h1>
+      <p class="login-sub">This area is private. Enter the admin password to continue.</p>
+
+      <div class="login-form">
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <input
+            type="password"
+            class="form-input"
+            id="loginPassword"
+            placeholder="Enter admin password"
+            autocomplete="current-password"
+          >
+        </div>
+
+        <p class="login-error" id="loginError" hidden>Incorrect password. Please try again.</p>
+
+        <button class="btn btn--primary btn--full" id="loginBtn">Sign In</button>
+      </div>
+
+      <p class="login-back">
+        <a href="index.html" class="login-back-link">← Back to storefront</a>
+      </p>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       ADMIN PANEL (shown when authenticated)
+  ═══════════════════════════════════════════════ -->
+  <div class="admin-wrap" id="adminWrap" hidden>
+
+    <!-- ── SIDEBAR ── -->
+    <aside class="sidebar" id="sidebar" role="complementary" aria-label="Admin sidebar">
+      <div class="sidebar__top">
+        <a href="index.html" class="sidebar__logo" aria-label="VAULTRIX Home">
+          <svg width="24" height="24" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 4L12 24" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M26 4L16 24" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+            <rect x="12.25" y="2" width="3.5" height="24" rx="1.75" fill="#E5181B"/>
+          </svg>
+          <span class="sidebar__wordmark">VAULTRIX</span>
+        </a>
+        <span class="sidebar__badge">ADMIN</span>
+      </div>
+
+      <nav class="sidebar__nav" aria-label="Admin navigation">
+        <button class="sidebar__nav-item sidebar__nav-item--active" data-view="products" aria-current="page">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="1" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="9" y="1" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="1" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+            <rect x="9" y="9" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+          Products
+        </button>
+        <button class="sidebar__nav-item" data-view="add">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M8 1V15M1 8H15" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+          Add Product
+        </button>
+      </nav>
+
+      <div class="sidebar__bottom">
+        <a href="index.html" class="sidebar__storefront-link" target="_blank" rel="noopener">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5.5 2H2C1.448 2 1 2.448 1 3V12C1 12.552 1.448 13 2 13H11C11.552 13 12 12.552 12 12V8.5M8.5 1H13M13 1V5.5M13 1L5.5 8.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          View Storefront
+        </a>
+        <button class="sidebar__logout" id="logoutBtn">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M5 2H2C1.448 2 1 2.448 1 3V11C1 11.552 1.448 12 2 12H5M9.5 4.5L13 7M13 7L9.5 9.5M13 7H5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <!-- ── MAIN ADMIN CONTENT ── -->
+    <main class="admin-main" id="adminMain">
+
+      <!-- Mobile top bar -->
+      <div class="admin-topbar">
+        <button class="admin-topbar__menu" id="sidebarToggle" aria-label="Toggle sidebar" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1 3H17M1 9H17M1 15H17" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <span class="admin-topbar__title" id="topbarTitle">Products</span>
+        <button class="admin-topbar__add btn btn--primary btn--sm" data-view="add">Add Product</button>
+      </div>
+
+      <!-- ── PRODUCTS VIEW ── -->
+      <section class="admin-view" id="viewProducts" data-view-name="products">
+
+        <!-- Stats Bar -->
+        <div class="admin-stats-bar" role="region" aria-label="Marketplace stats">
+          <div class="admin-stat-card">
+            <span class="admin-stat-card__number" id="adminStatTotal">0</span>
+            <span class="admin-stat-card__label">Total Products</span>
+          </div>
+          <div class="admin-stat-card">
+            <span class="admin-stat-card__number admin-stat-card__number--green" id="adminStatAvailable">0</span>
+            <span class="admin-stat-card__label">In Stock</span>
+          </div>
+          <div class="admin-stat-card">
+            <span class="admin-stat-card__number admin-stat-card__number--grey" id="adminStatSold">0</span>
+            <span class="admin-stat-card__label">Sold</span>
+          </div>
+          <div class="admin-stat-card">
+            <span class="admin-stat-card__number admin-stat-card__number--red" id="adminStatFeatured">0</span>
+            <span class="admin-stat-card__label">Featured</span>
+          </div>
+        </div>
+
+        <!-- Products Table Header -->
+        <div class="admin-table-header">
+          <h2 class="admin-section-title">All Products</h2>
+          <div class="admin-table-controls">
+            <div class="admin-search-wrap">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <circle cx="6" cy="6" r="4.5" stroke="#9A9A9A" stroke-width="1.4"/>
+                <path d="M9.5 9.5L12.5 12.5" stroke="#9A9A9A" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+              <input
+                type="search"
+                class="admin-search"
+                id="adminSearch"
+                placeholder="Search products…"
+                aria-label="Search products"
+                autocomplete="off"
+              >
+            </div>
+            <button class="btn btn--primary btn--sm" data-view="add">+ Add Product</button>
+          </div>
+        </div>
+
+        <!-- Product List (table-style rows) -->
+        <div class="admin-product-list" id="adminProductList" role="list" aria-label="Product list">
+          <!-- Rows injected by admin.js -->
+        </div>
+
+        <!-- Admin empty state -->
+        <div class="admin-empty" id="adminEmpty" hidden>
+          <p class="admin-empty__title">No products yet.</p>
+          <p class="admin-empty__sub">Click "Add Product" to list your first item.</p>
+          <button class="btn btn--primary" data-view="add" style="margin-top:16px;">Add Your First Product</button>
+        </div>
+
+      </section>
+
+      <!-- ── ADD / EDIT VIEW ── -->
+      <section class="admin-view admin-view--hidden" id="viewAddEdit" data-view-name="add">
+
+        <div class="admin-form-header">
+          <button class="admin-back-btn" id="backToProducts" aria-label="Back to products">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M10 3L4 8L10 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Back
+          </button>
+          <h2 class="admin-section-title" id="formTitle">Add New Product</h2>
+        </div>
+
+        <div class="admin-form-wrap">
+          <div class="admin-form" id="productForm">
+
+            <!-- Hidden: editing product id -->
+            <input type="hidden" id="editProductId" value="">
+
+            <!-- Row 1: Name + Category -->
+            <div class="form-row form-row--2">
+              <div class="form-group">
+                <label class="form-label" for="fieldName">
+                  Product Name <span class="form-required">*</span>
+                </label>
+                <input type="text" class="form-input" id="fieldName" placeholder="e.g. Minimal Resume Template" maxlength="60" autocomplete="off" required>
+                <span class="form-hint">Max 60 characters</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="fieldCategory">
+                  Category <span class="form-required">*</span>
+                </label>
+                <div class="select-wrap">
+                  <select class="form-input form-select" id="fieldCategory" required>
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="Template">Template</option>
+                    <option value="Preset">Preset</option>
+                    <option value="Ebook">Ebook</option>
+                    <option value="Toolkit">Toolkit</option>
+                    <option value="Font">Font</option>
+                    <option value="Mockup">Mockup</option>
+                    <option value="UI Kit">UI Kit</option>
+                    <option value="Illustration">Illustration</option>
+                    <option value="Other">Other</option>
+                  </select>
+                  <svg class="select-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M2 4L6 8L10 4" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 2: Price + Status -->
+            <div class="form-row form-row--2">
+              <div class="form-group">
+                <label class="form-label" for="fieldPrice">
+                  Price <span class="form-required">*</span>
+                </label>
+                <input type="text" class="form-input" id="fieldPrice" placeholder="e.g. $29 or $19.99" autocomplete="off" required>
+                <span class="form-hint">Include the $ sign. Display only — payment handled externally.</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="fieldStatus">
+                  Status <span class="form-required">*</span>
+                </label>
+                <div class="select-wrap">
+                  <select class="form-input form-select" id="fieldStatus" required>
+                    <option value="in-stock" selected>In Stock</option>
+                    <option value="out-of-stock">Out of Stock (Sold)</option>
+                  </select>
+                  <svg class="select-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path d="M2 4L6 8L10 4" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row 3: Cover Image URL -->
+            <div class="form-group">
+              <label class="form-label" for="fieldCoverImage">
+                Cover Image URL <span class="form-required">*</span>
+              </label>
+              <input type="url" class="form-input" id="fieldCoverImage" placeholder="https://example.com/cover.jpg" autocomplete="off" required>
+              <span class="form-hint">Full URL to the product cover image. Host images externally (e.g. Cloudinary, Imgur).</span>
+              <!-- Live preview -->
+              <div class="img-preview-wrap" id="coverPreviewWrap" hidden>
+                <img class="img-preview" id="coverPreview" src="" alt="Cover image preview" loading="lazy">
+              </div>
+            </div>
+
+            <!-- Row 4: Buy Link -->
+            <div class="form-group">
+              <label class="form-label" for="fieldBuyLink">
+                Buy Link <span class="form-required">*</span>
+              </label>
+              <input type="url" class="form-input" id="fieldBuyLink" placeholder="https://your-gumroad.com/l/product-slug" autocomplete="off" required>
+              <span class="form-hint">External product page URL (Gumroad, Payhip, etc.). Customers are redirected here on "Buy Now".</span>
+            </div>
+
+            <!-- Row 5: Description -->
+            <div class="form-group">
+              <label class="form-label" for="fieldDescription">
+                Description <span class="form-required">*</span>
+              </label>
+              <textarea class="form-input form-textarea" id="fieldDescription" placeholder="Describe your product in detail. What's included? Who is it for?" maxlength="800" rows="5" required></textarea>
+              <span class="form-hint" id="descCharCount">0 / 800 characters</span>
+            </div>
+
+            <!-- Row 6: Screenshots -->
+            <div class="form-group">
+              <label class="form-label" for="fieldScreenshot1">
+                Screenshots <span class="form-required">*</span>
+              </label>
+              <span class="form-hint" style="display:block;margin-bottom:10px;">Provide 1 to 5 screenshot URLs. The first screenshot is shown as the main image in the detail modal.</span>
+              <div class="screenshots-inputs" id="screenshotsInputs">
+                <input type="url" class="form-input screenshot-input" id="fieldScreenshot1" placeholder="Screenshot 1 URL (required)" data-screenshot="1" autocomplete="off" required>
+                <input type="url" class="form-input screenshot-input" id="fieldScreenshot2" placeholder="Screenshot 2 URL (optional)" data-screenshot="2" autocomplete="off">
+                <input type="url" class="form-input screenshot-input" id="fieldScreenshot3" placeholder="Screenshot 3 URL (optional)" data-screenshot="3" autocomplete="off">
+                <input type="url" class="form-input screenshot-input" id="fieldScreenshot4" placeholder="Screenshot 4 URL (optional)" data-screenshot="4" autocomplete="off">
+                <input type="url" class="form-input screenshot-input" id="fieldScreenshot5" placeholder="Screenshot 5 URL (optional)" data-screenshot="5" autocomplete="off">
+              </div>
+            </div>
+
+            <!-- Row 7: Featured Toggle -->
+            <div class="form-group">
+              <div class="toggle-row">
+                <div class="toggle-row__info">
+                  <span class="toggle-row__label">Featured Product</span>
+                  <span class="toggle-row__hint">Featured products appear in the horizontal "Featured" section on the storefront.</span>
+                </div>
+                <label class="toggle" for="fieldFeatured" aria-label="Mark as featured">
+                  <input type="checkbox" class="toggle__input" id="fieldFeatured">
+                  <span class="toggle__track">
+                    <span class="toggle__thumb"></span>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Form errors -->
+            <div class="form-errors" id="formErrors" hidden>
+              <p class="form-errors__title">Please fix the following errors:</p>
+              <ul class="form-errors__list" id="formErrorList"></ul>
+            </div>
+
+            <!-- Form actions -->
+            <div class="form-actions">
+              <button type="button" class="btn btn--ghost" id="cancelFormBtn">Cancel</button>
+              <button type="button" class="btn btn--primary" id="submitFormBtn">Save Product</button>
+            </div>
+
+          </div><!-- /admin-form -->
+
+          <!-- Right-side preview (desktop only) -->
+          <div class="admin-form-preview" id="formPreview">
+            <p class="admin-form-preview__label">Live Card Preview</p>
+            <div class="preview-card" id="previewCard">
+              <div class="preview-card__img-zone" id="previewImgZone">
+                <div class="preview-card__placeholder">
+                  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect x="2" y="6" width="28" height="20" rx="3" stroke="#E8E8E8" stroke-width="2"/>
+                    <path d="M2 22L9 15L14 20L21 11L30 22" stroke="#E8E8E8" stroke-width="2" stroke-linecap="round"/>
+                    <circle cx="10.5" cy="12.5" r="2.5" stroke="#E8E8E8" stroke-width="2"/>
+                  </svg>
+                </div>
+                <span class="preview-card__badge preview-card__badge--in-stock" id="previewBadge">IN STOCK</span>
+                <span class="preview-card__chip" id="previewChip">Category</span>
+              </div>
+              <div class="preview-card__content">
+                <p class="preview-card__name" id="previewName">Product Name</p>
+                <p class="preview-card__price" id="previewPrice">$00</p>
+                <p class="preview-card__desc" id="previewDesc">Short description preview…</p>
+                <button class="preview-card__btn" tabindex="-1" aria-hidden="true">View Details</button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /admin-form-wrap -->
+      </section>
+
+    </main><!-- /admin-main -->
+
+  </div><!-- /admin-wrap -->
+
+  <!-- ═══════════════════════════════════════════════
+       DELETE CONFIRM MODAL
+  ═══════════════════════════════════════════════ -->
+  <div class="confirm-backdrop" id="confirmBackdrop" hidden></div>
+  <div class="confirm-modal" id="confirmModal" role="alertdialog" aria-modal="true" aria-labelledby="confirmTitle" hidden>
+    <div class="confirm-modal__icon" aria-hidden="true">
+      <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="16" cy="16" r="15" stroke="#E5181B" stroke-width="2"/>
+        <path d="M16 8V18" stroke="#E5181B" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="16" cy="23" r="1.5" fill="#E5181B"/>
+      </svg>
+    </div>
+    <h3 class="confirm-modal__title" id="confirmTitle">Delete Product?</h3>
+    <p class="confirm-modal__body" id="confirmBody">This action cannot be undone. The product will be permanently removed from the store.</p>
+    <div class="confirm-modal__actions">
+      <button class="btn btn--ghost" id="confirmCancelBtn">Cancel</button>
+      <button class="btn btn--danger" id="confirmDeleteBtn">Delete</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       TOAST NOTIFICATION
+  ═══════════════════════════════════════════════ -->
+  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true" hidden>
+    <span class="toast__icon" id="toastIcon" aria-hidden="true"></span>
+    <span class="toast__message" id="toastMessage"></span>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/admin.js"></script>
+
+</body>
+</html>

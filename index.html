@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="VAULTRIX — Exclusive single-sale digital products. Every product sells once. Originals only.">
+  <meta name="theme-color" content="#0A0A0A">
+  <meta property="og:title" content="VAULTRIX">
+  <meta property="og:description" content="Exclusive single-sale digital products.">
+  <title>VAULTRIX — Originals, Once.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;700;800&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       NAVIGATION BAR
+  ═══════════════════════════════════════════════ -->
+  <header class="nav" id="nav" role="banner">
+    <div class="nav__inner">
+
+      <!-- Logo -->
+      <a href="index.html" class="nav__logo" aria-label="VAULTRIX Home">
+        <!-- SVG Logo Mark: bold V with red vertical bar bisecting center -->
+        <svg class="nav__logo-mark" width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Left stroke of V -->
+          <path d="M2 4L12 24" stroke="#0A0A0A" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Right stroke of V -->
+          <path d="M26 4L16 24" stroke="#0A0A0A" stroke-width="3.5" stroke-linecap="round"/>
+          <!-- Red vertical bar bisecting center — the vault-door element -->
+          <rect x="12.25" y="2" width="3.5" height="24" rx="1.75" fill="#E5181B"/>
+        </svg>
+        <span class="nav__wordmark">VAULTRIX</span>
+      </a>
+
+      <!-- Center Nav Links (desktop only) -->
+      <nav class="nav__links" aria-label="Primary navigation">
+        <a href="#shop" class="nav__link nav__link--active">Shop</a>
+        <a href="#featured" class="nav__link">Featured</a>
+        <a href="#about" class="nav__link">About</a>
+      </nav>
+
+      <!-- Right Controls -->
+      <div class="nav__right">
+        <!-- Search (desktop inline expand) -->
+        <div class="nav__search-wrap" id="searchWrap">
+          <button class="nav__search-btn" id="searchToggle" aria-label="Toggle search" aria-expanded="false">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="9" cy="9" r="6.5" stroke="#0A0A0A" stroke-width="1.6"/>
+              <path d="M13.5 13.5L17.5 17.5" stroke="#0A0A0A" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <input
+            type="search"
+            class="nav__search-input"
+            id="navSearchInput"
+            placeholder="Search products…"
+            aria-label="Search products"
+            autocomplete="off"
+          >
+        </div>
+
+        <!-- Hamburger (mobile only) -->
+        <button class="nav__hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+          <span class="nav__hamburger-line"></span>
+        </button>
+      </div>
+
+    </div><!-- /nav__inner -->
+
+    <!-- Mobile search drop (below nav) -->
+    <div class="nav__mobile-search" id="mobileSearch" hidden>
+      <input
+        type="search"
+        class="nav__mobile-search-input"
+        id="mobileSearchInput"
+        placeholder="Search products…"
+        aria-label="Search products"
+        autocomplete="off"
+      >
+    </div>
+  </header>
+
+  <!-- Mobile Full-Screen Menu Overlay -->
+  <div class="mobile-menu" id="mobileMenu" aria-modal="true" role="dialog" aria-label="Navigation menu" hidden>
+    <div class="mobile-menu__top">
+      <!-- White logo for dark background -->
+      <a href="index.html" class="mobile-menu__logo" aria-label="VAULTRIX Home">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M2 4L12 24" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M26 4L16 24" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+          <rect x="12.25" y="2" width="3.5" height="24" rx="1.75" fill="#E5181B"/>
+        </svg>
+        <span class="mobile-menu__wordmark">VAULTRIX</span>
+      </a>
+      <button class="mobile-menu__close" id="menuClose" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M1 1L17 17M17 1L1 17" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile-menu__nav" aria-label="Mobile navigation">
+      <a href="#shop" class="mobile-menu__link">Shop</a>
+      <a href="#featured" class="mobile-menu__link">Featured</a>
+      <a href="#about" class="mobile-menu__link">About</a>
+    </nav>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       HERO SECTION
+  ═══════════════════════════════════════════════ -->
+  <section class="hero" id="about" aria-labelledby="heroHeading">
+    <!-- Decorative grain overlay via ::before in CSS -->
+
+    <!-- Giant decorative background text -->
+    <span class="hero__bg-text" aria-hidden="true">VAULTRIX</span>
+
+    <!-- Foreground content -->
+    <div class="hero__content">
+      <p class="hero__eyebrow">Exclusive Digital Products</p>
+      <h1 class="hero__heading" id="heroHeading">
+        Where Originals<br>Live Once.
+      </h1>
+      <p class="hero__sub">Every product listed sells to exactly one buyer. First come, first served.</p>
+
+      <!-- Stat Counters -->
+      <div class="hero__stats" role="region" aria-label="Marketplace statistics">
+        <div class="hero__stat">
+          <span class="hero__stat-number" id="statTotal">0</span>
+          <span class="hero__stat-label">Products Listed</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-number" id="statAvailable">0</span>
+          <span class="hero__stat-label">Still Available</span>
+        </div>
+        <div class="hero__stat-divider" aria-hidden="true"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-number" id="statSold">0</span>
+          <span class="hero__stat-label">Already Sold</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero Bottom Bar -->
+  <div class="hero-bar" id="shop" role="region" aria-label="Product count bar">
+    <span class="hero-bar__label">All Products</span>
+    <span class="hero-bar__count" id="heroBarCount">0 items</span>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       FILTER + SORT BAR
+  ═══════════════════════════════════════════════ -->
+  <div class="filter-bar" id="filterBar" role="region" aria-label="Product filters">
+    <div class="filter-bar__inner">
+
+      <!-- Category Pills (left, scrollable) -->
+      <div class="filter-bar__pills-wrap" role="group" aria-label="Filter by category">
+        <div class="filter-bar__pills" id="categoryPills">
+          <button class="pill pill--active" data-category="All">All</button>
+          <button class="pill" data-category="Template">Template</button>
+          <button class="pill" data-category="Preset">Preset</button>
+          <button class="pill" data-category="Ebook">Ebook</button>
+          <button class="pill" data-category="Toolkit">Toolkit</button>
+          <button class="pill" data-category="Font">Font</button>
+          <button class="pill" data-category="Mockup">Mockup</button>
+          <button class="pill" data-category="UI Kit">UI Kit</button>
+          <button class="pill" data-category="Illustration">Illustration</button>
+          <button class="pill" data-category="Other">Other</button>
+        </div>
+      </div>
+
+      <!-- Right-side controls -->
+      <div class="filter-bar__right">
+        <!-- Stock Filter Toggle -->
+        <div class="stock-toggle" role="group" aria-label="Filter by availability">
+          <button class="stock-toggle__btn stock-toggle__btn--active" data-stock="all">All</button>
+          <button class="stock-toggle__btn" data-stock="in-stock">In Stock</button>
+          <button class="stock-toggle__btn" data-stock="out-of-stock">Out of Stock</button>
+        </div>
+
+        <!-- Sort Dropdown -->
+        <div class="sort-wrap">
+          <select class="sort-select" id="sortSelect" aria-label="Sort products">
+            <option value="newest">Sort: Newest</option>
+            <option value="oldest">Sort: Oldest</option>
+            <option value="az">Sort: A–Z</option>
+            <option value="za">Sort: Z–A</option>
+          </select>
+          <svg class="sort-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 4L6 8L10 4" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Mobile Filter Button -->
+      <button class="filter-bar__mobile-filter-btn" id="mobileFilterBtn" aria-expanded="false">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M1 2.5H13M3 7H11M5 11.5H9" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Filter
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Mobile Filter Bottom Sheet -->
+  <div class="filter-sheet" id="filterSheet" role="dialog" aria-modal="true" aria-label="Filter options" hidden>
+    <div class="filter-sheet__backdrop" id="filterSheetBackdrop"></div>
+    <div class="filter-sheet__panel">
+      <div class="filter-sheet__handle" aria-hidden="true"></div>
+      <div class="filter-sheet__header">
+        <span class="filter-sheet__title">Filter &amp; Sort</span>
+        <button class="filter-sheet__close" id="filterSheetClose" aria-label="Close filter panel">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1 1L15 15M15 1L1 15" stroke="#0A0A0A" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="filter-sheet__section">
+        <p class="filter-sheet__label">Category</p>
+        <div class="filter-sheet__pills" id="mobileCategoyPills">
+          <button class="pill pill--active" data-mobile-category="All">All</button>
+          <button class="pill" data-mobile-category="Template">Template</button>
+          <button class="pill" data-mobile-category="Preset">Preset</button>
+          <button class="pill" data-mobile-category="Ebook">Ebook</button>
+          <button class="pill" data-mobile-category="Toolkit">Toolkit</button>
+          <button class="pill" data-mobile-category="Font">Font</button>
+          <button class="pill" data-mobile-category="Mockup">Mockup</button>
+          <button class="pill" data-mobile-category="UI Kit">UI Kit</button>
+          <button class="pill" data-mobile-category="Illustration">Illustration</button>
+          <button class="pill" data-mobile-category="Other">Other</button>
+        </div>
+      </div>
+
+      <div class="filter-sheet__section">
+        <p class="filter-sheet__label">Availability</p>
+        <div class="stock-toggle stock-toggle--sheet" role="group" aria-label="Filter by availability">
+          <button class="stock-toggle__btn stock-toggle__btn--active" data-mobile-stock="all">All</button>
+          <button class="stock-toggle__btn" data-mobile-stock="in-stock">In Stock</button>
+          <button class="stock-toggle__btn" data-mobile-stock="out-of-stock">Out of Stock</button>
+        </div>
+      </div>
+
+      <div class="filter-sheet__section">
+        <p class="filter-sheet__label">Sort</p>
+        <div class="sort-wrap sort-wrap--sheet">
+          <select class="sort-select" id="mobileSortSelect" aria-label="Sort products">
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="az">A–Z</option>
+            <option value="za">Z–A</option>
+          </select>
+          <svg class="sort-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 4L6 8L10 4" stroke="#0A0A0A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </div>
+      </div>
+
+      <button class="filter-sheet__apply" id="filterSheetApply">Apply Filters</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MAIN CONTENT — PRODUCT GRID
+  ═══════════════════════════════════════════════ -->
+  <main class="main" id="mainContent">
+
+    <!-- Product Grid -->
+    <section class="grid-section" aria-label="Product listing">
+      <div class="product-grid" id="productGrid" role="list">
+        <!-- Cards injected by app.js -->
+      </div>
+
+      <!-- Empty State -->
+      <div class="empty-state" id="emptyState" hidden aria-live="polite">
+        <div class="empty-state__icon" aria-hidden="true">
+          <!-- Minimal vault SVG illustration -->
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="12" width="56" height="48" rx="8" stroke="#E8E8E8" stroke-width="2.5"/>
+            <circle cx="36" cy="36" r="12" stroke="#E8E8E8" stroke-width="2.5"/>
+            <circle cx="36" cy="36" r="5" stroke="#E8E8E8" stroke-width="2"/>
+            <path d="M36 24V20M36 52V48M24 36H20M52 36H48" stroke="#E8E8E8" stroke-width="2" stroke-linecap="round"/>
+            <rect x="12.25" y="10" width="3.5" height="8" rx="1.75" fill="#E5181B" opacity="0.5"/>
+          </svg>
+        </div>
+        <p class="empty-state__title">No products listed yet.</p>
+        <p class="empty-state__sub">Check back soon.</p>
+      </div>
+
+      <!-- No Results State (when search/filter returns nothing) -->
+      <div class="empty-state" id="noResultsState" hidden aria-live="polite">
+        <div class="empty-state__icon" aria-hidden="true">
+          <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="32" cy="32" r="22" stroke="#E8E8E8" stroke-width="2.5"/>
+            <path d="M48 48L62 62" stroke="#E8E8E8" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M24 32H40M32 24V40" stroke="#E5181B" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          </svg>
+        </div>
+        <p class="empty-state__title">No products match your filters.</p>
+        <p class="empty-state__sub">Try adjusting your search or filter criteria.</p>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════
+         FEATURED SECTION — Horizontal Scroll
+    ═══════════════════════════════════════════════ -->
+    <section class="featured-section" id="featured" aria-labelledby="featuredHeading">
+      <div class="featured-section__header">
+        <h2 class="featured-section__heading" id="featuredHeading">Featured</h2>
+        <p class="featured-section__sub">Handpicked originals worth seeing first.</p>
+      </div>
+      <div class="featured-scroll" id="featuredScroll" role="list" aria-label="Featured products">
+        <!-- Featured cards injected by app.js -->
+      </div>
+      <!-- Empty featured state (hidden until JS decides) -->
+      <p class="featured-section__empty" id="featuredEmpty" hidden>No featured products at this time.</p>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════════ -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__inner">
+
+      <!-- Footer Logo -->
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo" aria-label="VAULTRIX Home">
+          <svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M2 4L12 24" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M26 4L16 24" stroke="#FFFFFF" stroke-width="3.5" stroke-linecap="round"/>
+            <rect x="12.25" y="2" width="3.5" height="24" rx="1.75" fill="#E5181B"/>
+          </svg>
+          <span class="footer__wordmark">VAULTRIX</span>
+        </a>
+        <p class="footer__tagline">Where Originals Live Once.</p>
+      </div>
+
+      <!-- Footer Nav -->
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <a href="index.html" class="footer__link">Shop</a>
+        <a href="legal.html#terms" class="footer__link">Terms of Service</a>
+        <a href="legal.html#privacy" class="footer__link">Privacy Policy</a>
+        <a href="admin.html" class="footer__link footer__link--admin">Admin</a>
+      </nav>
+
+      <!-- Footer Copyright -->
+      <p class="footer__copy">© 2025 VAULTRIX. All rights reserved.</p>
+
+    </div>
+  </footer>
+
+  <!-- ═══════════════════════════════════════════════
+       PRODUCT DETAIL MODAL
+  ═══════════════════════════════════════════════ -->
+  <div class="modal-backdrop" id="modalBackdrop" hidden aria-hidden="true"></div>
+
+  <div
+    class="modal"
+    id="productModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalProductName"
+    hidden
+  >
+    <!-- Red accent top bar -->
+    <div class="modal__accent-bar" aria-hidden="true"></div>
+
+    <!-- Close Button -->
+    <button class="modal__close" id="modalClose" aria-label="Close product details">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M1 1L13 13M13 1L1 13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <div class="modal__layout">
+
+      <!-- Left column: images -->
+      <div class="modal__images">
+        <div class="modal__main-img-wrap">
+          <img
+            class="modal__main-img"
+            id="modalMainImg"
+            src=""
+            alt="Product screenshot"
+            loading="lazy"
+          >
+        </div>
+        <div class="modal__thumbs" id="modalThumbs" role="list" aria-label="Product screenshots">
+          <!-- Thumbnails injected by app.js -->
+        </div>
+      </div>
+
+      <!-- Right column: product info -->
+      <div class="modal__info">
+        <!-- Category + Stock badges -->
+        <div class="modal__badges">
+          <span class="modal__category-chip" id="modalCategoryChip"></span>
+          <span class="modal__stock-badge" id="modalStockBadge"></span>
+        </div>
+
+        <!-- Name -->
+        <h2 class="modal__name" id="modalProductName"></h2>
+
+        <!-- Price -->
+        <p class="modal__price" id="modalPrice"></p>
+
+        <!-- Divider -->
+        <hr class="modal__divider">
+
+        <!-- Description -->
+        <p class="modal__desc-label">About This Product</p>
+        <p class="modal__desc" id="modalDesc"></p>
+
+        <!-- Divider -->
+        <hr class="modal__divider">
+
+        <!-- CTA -->
+        <button class="modal__cta" id="modalCta">BUY NOW</button>
+        <p class="modal__cta-disclaimer">You will be redirected to the product page. Payment and delivery handled externally.</p>
+      </div>
+
+    </div><!-- /modal__layout -->
+  </div><!-- /modal -->
+
+  <!-- ═══════════════════════════════════════════════
+       SCRIPTS
+  ═══════════════════════════════════════════════ -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
